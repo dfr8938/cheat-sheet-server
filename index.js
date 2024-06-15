@@ -3,7 +3,8 @@ import "dotenv/config";
 import cors from "cors";
 import { sequelize } from "./utils/db.js";
 import { errorHandlingMiddleware } from "./middlewares/errorHandlingMiddleware.js";
-import { questionRouter } from "./routers/questionRouter.js";
+
+import {routers} from "./routers/routers.js";
 
 const app = express();
 
@@ -11,7 +12,7 @@ const port = process.env.APP_PORT;
 
 app.use(cors());
 app.use(express.json());
-app.use("/api", questionRouter);
+app.use("/api", routers);
 
 // Подключение в конце, обработка ошибок
 app.use(errorHandlingMiddleware);

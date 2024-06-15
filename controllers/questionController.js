@@ -15,15 +15,23 @@ class QuestionController {
     }
   }
 
-  async getAll(req, res) {
-    const questions = await Question.findAll();
-    return res.json(questions);
+  async getAll(req, res, next) {
+    try {
+      const questions = await Question.findAll();
+      return res.json(questions);
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 
-  async delete(req, res) {
-    const { id } = req.params;
-    const questionDelete = await Question.destroy({ where: { id } });
-    return res.json(questionDelete);
+  async delete(req, res, next) {
+    try {
+      const { id } = req.params;
+      const questionDelete = await Question.destroy({ where: { id } });
+      return res.json(questionDelete);
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 }
 

@@ -1,4 +1,8 @@
 const BASIC_URL = "/";
 const ID_URL = "/:id";
 
-export { BASIC_URL, ID_URL };
+const FARMA_URL = "/farma";
+
+const RECIPE_URL = "/recipe";
+
+export { BASIC_URL, ID_URL, FARMA_URL, RECIPE_URL };
