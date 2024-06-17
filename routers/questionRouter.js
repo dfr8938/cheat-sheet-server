@@ -5,6 +5,7 @@ const questionRouter = new Router();
 
 questionRouter.post(BASIC_URL, questionController.create);
 questionRouter.delete(ID_URL, questionController.delete);
+questionRouter.put(ID_URL, questionController.update);
 questionRouter.get(BASIC_URL, questionController.getAll);
 
 export { questionRouter };

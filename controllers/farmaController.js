@@ -23,6 +23,20 @@ class FarmaController {
         }
     }
 
+    async update(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { title, description, pd, lp, md, fe, pp, pe } = req.body;
+            const updateQuestion = await FarmaQuestion.update(
+                { title, description, pd, lp, md, fe, pp, pe },
+                { where: { id } }
+            );
+            return res.json(updateQuestion);
+        } catch (e) {
+            next(ApiError.badRequest(e.message));
+        }
+    }
+
     async delete (req, res, next) {
         try {
             const { id } = req.params;

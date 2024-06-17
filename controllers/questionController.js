@@ -24,6 +24,20 @@ class QuestionController {
     }
   }
 
+  async update(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { title, answer } = req.body;
+      const updateQuestion = await Question.update(
+          { title, answer},
+          { where: { id } }
+      );
+      return res.json(updateQuestion);
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
+  }
+
   async delete(req, res, next) {
     try {
       const { id } = req.params;
